@@ -7,12 +7,19 @@ let upPressed = false;
 let downPressed = false;
 
 ctx.lineWidth = 5;
-
 let playerX = 5;
 let playerY = 5;
 let Speed = 7;
+let obstacleX = [];
+let obstacleY = [];
+let obstacle = [];
 
 function drawPlayer() {
+    
+    if(playerX < 5) playerX = 5;
+    if(playerY < 5) playerY = 5;
+    if(playerX > 975) playerX = 975;
+    if(playerY > 475) playerY = 475; 
     ctx.strokeStyle = 'black';
     ctx.fillStyle = 'red';
     ctx.strokeRect(playerX, playerY, 20, 20);
@@ -70,3 +77,13 @@ function move() {
 
 document.addEventListener('keydown', start);
 document.addEventListener('keyup', stop);
+drawObstacle();
+
+function drawObstacle() {
+    for (let i = 2; i < 30; i++) {
+        ctx.strokeStyle = 'black';
+        ctx.fillStyle = 'blue';
+        ctx.strokeRect(i * 30, 5, 20, 20);
+        ctx.fillRect(i * 30, 5, 20, 20);
+    }
+}
