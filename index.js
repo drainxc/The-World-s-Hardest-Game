@@ -10,7 +10,8 @@ let bounce = true;
 ctx.lineWidth = 5;
 let playerX = 5;
 let playerY = 5;
-let Speed = 7;
+let playerSpeed = 2;
+let obdtacleSpeed = 7;
 let obstacleX = [];
 let obstacleY = 235;
 
@@ -19,12 +20,9 @@ function drawPlayer() {
     if (playerY < 3) playerY = 3;
     if (playerX > 978) playerX = 978;
     if (playerY > 478) playerY = 478;
-    console.log(obstacleY);
-    console.log(playerY);
     for (let i = 0; i < 25; i++) {
         if ((obstacleX[i] + 20) >= playerX && (obstacleX[i] - 20) <= playerX && obstacleY + 20 >= playerY && obstacleY - 20 <= playerY) {
-            console.log('asdf');
-            location.reload();
+            location.href="gameover.html";
         }
     }
     ctx.strokeStyle = 'black';
@@ -46,26 +44,7 @@ function start(event) {
     else if (event.key == 'ArrowDown' || event.key == 's' || event.key == 'S' || event.key == '2') {
         downPressed = true;
     }
-    move();
 }
-
-setInterval(function () {
-    ctx.clearRect(0, 0, 1000, 500);
-    if (bounce) {
-        if (obstacleY > 465) {
-            bounce = false;
-        }
-        obstacleY += Speed;
-    }
-    else {
-        if (obstacleY < 10) {
-            bounce = true;
-        }
-        obstacleY -= Speed;
-    }
-    drawPlayer();
-    drawObstacle();
-}, 20);
 
 function stop(event) {
     if (event.key == 'ArrowLeft' || event.key == 'a' || event.key == 'A' || event.key == '4') {
@@ -80,32 +59,53 @@ function stop(event) {
     else if (event.key == 'ArrowDown' || event.key == 's' || event.key == 'S' || event.key == '2') {
         downPressed = false;
     }
-    move();
 }
+
+setInterval(function () {
+    ctx.clearRect(0, 0, 1000, 500);
+    if (bounce) {
+        if (obstacleY > 465) {
+            bounce = false;
+        }
+        obstacleY += obdtacleSpeed;
+    }
+    else {
+        if (obstacleY < 10) {
+            bounce = true;
+        }
+        obstacleY -= obdtacleSpeed;
+    }
+    drawPlayer();
+    drawObstacle();
+}, 20);
 
 function move() {
     ctx.clearRect(0, 0, 1000, 500);
     if (leftPressed) {
-        playerX -= Speed;
+        playerX -= playerSpeed;
     }
     if (rightPressed) {
-        playerX += Speed;
+        playerX += playerSpeed;
     }
     if (upPressed) {
-        playerY -= Speed;
+        playerY -= playerSpeed;
     }
     if (downPressed) {
-        playerY += Speed;
+        playerY += playerSpeed;
     }
     drawPlayer();
     drawObstacle();
+    setTimeout(move, 10);
 }
+move();
+
+
 
 function drawObstacle() {
     for (let i = 0; i < 5; i++) {
         ctx.strokeStyle = 'black';
-        ctx.fillStyle = 'blue'; 4
-        obstacleX[i] = (i + 4) * 100;
+        ctx.fillStyle = 'blue';
+        obstacleX[i] = (i + 1) * 160;
         ctx.strokeRect(obstacleX[i], obstacleY, 20, 20);
         ctx.fillRect(obstacleX[i], obstacleY, 20, 20);
     }
