@@ -31,7 +31,7 @@ function drawPlayer() {
             location.href="gameover.html";
         }
     }
-    if (playerX >= 900 && playerX <= 1000 && playerY >= 300 && playerY <= 500) {
+    if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500) {
         location.href="file:///C:/Users/user/Desktop/World's%20Hardest%20Game/secondStage.html";
     }
     ctx.strokeStyle = 'black';
@@ -73,8 +73,8 @@ function stop(event) {
 setInterval(function () {
     ctx.clearRect(0, 0, 1000, 500);
     ctx.fillStyle = "rgb(162, 255, 209)";
-    ctx.fillRect(0, 0, 100, 200)
-    ctx.fillRect(900, 300, 100, 200)
+    ctx.fillRect(0, 0, 100, 100)
+    ctx.fillRect(900, 400, 100, 100)
     if (bounce) {
         if (obstacleY > 465) {
             bounce = false;
@@ -94,8 +94,8 @@ setInterval(function () {
 function move() {
     ctx.clearRect(0, 0, 1000, 500);
     ctx.fillStyle = "rgb(162, 255, 209)";
-    ctx.fillRect(0, 0, 100, 200)
-    ctx.fillRect(900, 300, 100, 200)
+    ctx.fillRect(0, 0, 100, 100)
+    ctx.fillRect(900, 400, 100, 100)
     if (leftPressed) {
         playerX -= playerSpeed;
     }
