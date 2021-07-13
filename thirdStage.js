@@ -17,7 +17,7 @@ ctx.lineWidth = 5;
 let playerX = 5;
 let playerY = 5;
 let playerSpeed = 2;
-let obstacleSpeed = 7;
+let obstacleSpeed = 14;
 let obstacleX = [];
 let obstacleY = 235;
 
@@ -80,7 +80,7 @@ setInterval(function () {
             bounce = false;
         }
         obstacleY += obstacleSpeed;
-        obstacleSpeed += 0.05;
+        obstacleSpeed += 0.175;
     }
     else {
         if (obstacleY < 10) {
@@ -88,7 +88,7 @@ setInterval(function () {
             
         }
         obstacleY -= obstacleSpeed;
-        obstacleSpeed += 0.05;
+        obstacleSpeed += 0.175;
     }
     drawPlayer();
     drawObstacle();

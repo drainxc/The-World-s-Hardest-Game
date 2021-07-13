@@ -18,10 +18,10 @@ ctx.lineWidth = 5;
 let playerX = 5;
 let playerY = 5;
 let playerSpeed = 2;
-let heightObstacleSpeed = 7;
+let heightObstacleSpeed = 14;
 let heightObstacleX = [];
 let heightObstacleY = 235;
-let widthObstacleSpeed = 14.9;
+let widthObstacleSpeed = 29.8;
 let widthObstacleX = 500;
 let widthObstacleY = [];
 
@@ -32,6 +32,9 @@ function drawPlayer() {
     if (playerY > 478) playerY = 478;
     for (let i = 0; i < 25; i++) {
         if ((heightObstacleX[i] + 20) >= playerX && (heightObstacleX[i] - 20) <= playerX && heightObstacleY + 20 >= playerY && heightObstacleY - 20 <= playerY) {
+            location.href="gameover.html";
+        }
+        if ((widthObstacleX + 20) >= playerX && (widthObstacleX - 20) <= playerX && widthObstacleY[i] + 20 >= playerY && widthObstacleY[i] - 20 <= playerY) {
             location.href="gameover.html";
         }
         if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500) {

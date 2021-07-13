@@ -18,12 +18,12 @@ ctx.lineWidth = 5;
 let playerX = 5;
 let playerY = 5;
 let playerSpeed = 2;
-let heightObstacleSpeed = 14;
+let heightObstacleSpeed = 7;
 let oddHeightObstacleX = [];
 let oddHeightObstacleY = 235;
 let evenHeightObstacleX = [];
 let evenHeightObstacleY = 235;
-let widthObstacleSpeed = 29.8;
+let widthObstacleSpeed = 14.9;
 let oddWidthObstacleX = 500;
 let oddWidthObstacleY = [];
 let evenWidthObstacleX = 500;
@@ -52,7 +52,7 @@ function drawPlayer() {
             location.href = "gameover.html";
         }
         if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500) {
-            location.href = "file:///C:/Users/user/Desktop/World's%20Hardest%20Game/sixthStage.html";
+            location.href = "";
         }
     }
     ctx.strokeStyle = 'black';

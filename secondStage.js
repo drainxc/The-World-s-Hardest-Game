@@ -17,7 +17,7 @@ ctx.lineWidth = 5;
 let playerX = 5;
 let playerY = 5;
 let playerSpeed = 2;
-let obstacleSpeed = 7;
+let obstacleSpeed = 14;
 let obstacleX = [];
 let obstacleY = 235;
 
