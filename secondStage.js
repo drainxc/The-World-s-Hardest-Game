@@ -32,7 +32,7 @@ function drawPlayer() {
         }
     }
     if (playerX >= 900 && playerX <= 1000 && playerY >= 300 && playerY <= 500) {
-        location.href="file:///C:/Users/user/Desktop/World's%20Hardest%20Game/secondStage.html";
+        location.href="file:///C:/Users/user/Desktop/World's%20Hardest%20Game/thirdStage.html";
     }
     ctx.strokeStyle = 'black';
     ctx.fillStyle = 'red';
@@ -117,10 +117,10 @@ move();
 
 
 function drawObstacle() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        obstacleX[i] = (i + 1) * 160;
+        obstacleX[i] = (i + 1.5) * 80;
         ctx.strokeRect(obstacleX[i], obstacleY, 20, 20);
         ctx.fillRect(obstacleX[i], obstacleY, 20, 20);
     }
