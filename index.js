@@ -1,13 +1,19 @@
 const canvas = document.getElementById('gameMap');
 const ctx = canvas.getContext('2d');
 
+canvas.width = 1000;
+canvas.height = 500;
+
 let leftPressed = false;
 let rightPressed = false;
 let upPressed = false;
 let downPressed = false;
 let bounce = true;
 
+ctx.fillStyle = "black";
+ctx.fillRect(0, 0, 1000, 500)
 ctx.lineWidth = 5;
+
 let playerX = 5;
 let playerY = 5;
 let playerSpeed = 2;
@@ -32,37 +38,40 @@ function drawPlayer() {
 }
 
 function start(event) {
-    if (event.key == 'ArrowLeft' || event.key == 'a' || event.key == 'A') {
+    if (event.key == 'a' || event.key == 'A') {
         leftPressed = true;
     }
-    else if (event.key == 'ArrowRight' || event.key == 'd' || event.key == 'D' || event.key == '6') {
+    else if (event.key == 'd' || event.key == 'D' || event.key == '6') {
         rightPressed = true;
     }
-    else if (event.key == 'ArrowUp' || event.key == 'w' || event.key == 'W' || event.key == '8') {
+    else if (event.key == 'w' || event.key == 'W' || event.key == '8') {
         upPressed = true;
     }
-    else if (event.key == 'ArrowDown' || event.key == 's' || event.key == 'S' || event.key == '2') {
+    else if (event.key == 's' || event.key == 'S' || event.key == '2') {
         downPressed = true;
     }
 }
 
 function stop(event) {
-    if (event.key == 'ArrowLeft' || event.key == 'a' || event.key == 'A' || event.key == '4') {
+    if (event.key == 'a' || event.key == 'A' || event.key == '4') {
         leftPressed = false;
     }
-    else if (event.key == 'ArrowRight' || event.key == 'd' || event.key == 'D' || event.key == '6') {
+    else if (event.key == 'd' || event.key == 'D' || event.key == '6') {
         rightPressed = false;
     }
-    else if (event.key == 'ArrowUp' || event.key == 'w' || event.key == 'W' || event.key == '8') {
+    else if (event.key == 'w' || event.key == 'W' || event.key == '8') {
         upPressed = false;
     }
-    else if (event.key == 'ArrowDown' || event.key == 's' || event.key == 'S' || event.key == '2') {
+    else if (event.key == 's' || event.key == 'S' || event.key == '2') {
         downPressed = false;
     }
 }
 
 setInterval(function () {
     ctx.clearRect(0, 0, 1000, 500);
+    ctx.fillStyle = "rgb(162, 255, 209)";
+    ctx.fillRect(0, 0, 100, 200)
+    ctx.fillRect(900, 300, 100, 200)
     if (bounce) {
         if (obstacleY > 465) {
             bounce = false;
@@ -81,6 +90,9 @@ setInterval(function () {
 
 function move() {
     ctx.clearRect(0, 0, 1000, 500);
+    ctx.fillStyle = "rgb(162, 255, 209)";
+    ctx.fillRect(0, 0, 100, 200)
+    ctx.fillRect(900, 300, 100, 200)
     if (leftPressed) {
         playerX -= playerSpeed;
     }
