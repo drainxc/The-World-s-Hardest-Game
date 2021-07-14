@@ -17,7 +17,7 @@ ctx.lineWidth = 5;
 let playerX = 5;
 let playerY = 5;
 let playerSpeed = 2;
-let obstacleSpeed = 14;
+let obstacleSpeed = 7;
 let obstacleX = [];
 let obstacleY = 235;
 
@@ -41,7 +41,7 @@ function drawPlayer() {
 }
 
 function start(event) {
-    if (event.key == 'a' || event.key == 'A') {
+    if (event.key == 'a' || event.key == 'A' || event.key == '') {
         leftPressed = true;
     }
     else if (event.key == 'd' || event.key == 'D' || event.key == '6') {
@@ -50,7 +50,7 @@ function start(event) {
     else if (event.key == 'w' || event.key == 'W' || event.key == '8') {
         upPressed = true;
     }
-    else if (event.key == 's' || event.key == 'S' || event.key == '2') {
+    else if (event.key == 's' || event.key == 'S' || event.key == '2' || event.key == '5') {
         downPressed = true;
     }
 }
@@ -65,7 +65,7 @@ function stop(event) {
     else if (event.key == 'w' || event.key == 'W' || event.key == '8') {
         upPressed = false;
     }
-    else if (event.key == 's' || event.key == 'S' || event.key == '2') {
+    else if (event.key == 's' || event.key == 'S' || event.key == '2' || event.key == '5') {
         downPressed = false;
     }
 }
@@ -80,7 +80,9 @@ setInterval(function () {
             bounce = false;
         }
         obstacleY += obstacleSpeed;
-        obstacleSpeed += 0.175;
+        if (obstacleSpeed <= 47) {
+            obstacleSpeed += 0.12;
+        }
     }
     else {
         if (obstacleY < 10) {
@@ -88,7 +90,9 @@ setInterval(function () {
             
         }
         obstacleY -= obstacleSpeed;
-        obstacleSpeed += 0.175;
+        if (obstacleSpeed <= 47) {
+            obstacleSpeed += 0.12;
+        }
     }
     drawPlayer();
     drawObstacle();

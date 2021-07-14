@@ -18,17 +18,17 @@ ctx.lineWidth = 5;
 let playerX = 5;
 let playerY = 5;
 let playerSpeed = 2;
-let heightObstacleSpeed = 7;
+let heightObstacleSpeed = 14;
 let oddHeightObstacleX = [];
 let oddHeightObstacleY = 235;
 let evenHeightObstacleX = [];
 let evenHeightObstacleY = 235;
-let widthObstacleSpeed = 14.9;
+let widthObstacleSpeed = 29.8;
 let oddWidthObstacleX = 500;
 let oddWidthObstacleY = [];
 let evenWidthObstacleX = 500;
 let evenWidthObstacleY = [];
-let alternately = [];
+let point = false;
 
 for (let num = 0; num < 10; num++) {
 }
@@ -51,7 +51,7 @@ function drawPlayer() {
         if ((evenWidthObstacleX + 20) >= playerX && (evenWidthObstacleX - 20) <= playerX && evenWidthObstacleY[i] + 20 >= playerY && evenWidthObstacleY[i] - 20 <= playerY) {
             location.href = "gameover.html";
         }
-        if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500) {
+        if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500 && point == true) {
             location.href = "";
         }
     }
@@ -62,7 +62,7 @@ function drawPlayer() {
 }
 
 function start(event) {
-    if (event.key == 'a' || event.key == 'A') {
+    if (event.key == 'a' || event.key == 'A' || event.key == '4') {
         leftPressed = true;
     }
     else if (event.key == 'd' || event.key == 'D' || event.key == '6') {
@@ -71,7 +71,7 @@ function start(event) {
     else if (event.key == 'w' || event.key == 'W' || event.key == '8') {
         upPressed = true;
     }
-    else if (event.key == 's' || event.key == 'S' || event.key == '2') {
+    else if (event.key == 's' || event.key == 'S' || event.key == '2' || event.key == '5') {
         downPressed = true;
     }
 }
@@ -86,7 +86,7 @@ function stop(event) {
     else if (event.key == 'w' || event.key == 'W' || event.key == '8') {
         upPressed = false;
     }
-    else if (event.key == 's' || event.key == 'S' || event.key == '2') {
+    else if (event.key == 's' || event.key == 'S' || event.key == '2' || event.key == '5') {
         downPressed = false;
     }
 }
@@ -96,6 +96,7 @@ setInterval(function () {
     ctx.fillStyle = "rgb(162, 255, 209)";
     ctx.fillRect(0, 0, 100, 100);
     ctx.fillRect(900, 400, 100, 100);
+    drawPoint();
 
     if (oddHeightObstacleY > 465) {
         heightBounce = false;
@@ -136,6 +137,8 @@ function move() {
     ctx.fillStyle = "rgb(162, 255, 209)";
     ctx.fillRect(0, 0, 100, 100);
     ctx.fillRect(900, 400, 100, 100);
+    drawPoint();
+
     if (leftPressed) {
         playerX -= playerSpeed;
     }
@@ -155,33 +158,53 @@ function move() {
 move();
 
 function drawObstacle() {
-    for (let i = 0; i < 20; i+=2) {
+    for (let i = 0; i < 18; i += 2) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        evenHeightObstacleX[i] = (i + 2.75) * 40;
+        evenHeightObstacleX[i] = (i + 2.35) * 45;
         ctx.strokeRect(evenHeightObstacleX[i], evenHeightObstacleY, 20, 20);
         ctx.fillRect(evenHeightObstacleX[i], evenHeightObstacleY, 20, 20);
     }
-    for (let i = 1; i < 20; i+=2) {
+    for (let i = 1; i < 18; i += 2) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        oddHeightObstacleX[i] = (i + 2.75) * 40;
+        oddHeightObstacleX[i] = (i + 2.35) * 45;
         ctx.strokeRect(oddHeightObstacleX[i], oddHeightObstacleY, 20, 20);
         ctx.fillRect(oddHeightObstacleX[i], oddHeightObstacleY, 20, 20);
     }
-    for (let i = 0; i < 7; i+=2) {
+    for (let i = 0; i < 4; i += 2) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        evenWidthObstacleY[i] = (i + 3) * 40;
+        evenWidthObstacleY[i] = (i + 1.5) * 80;
         ctx.strokeRect(evenWidthObstacleX, evenWidthObstacleY[i], 20, 20);
         ctx.fillRect(evenWidthObstacleX, evenWidthObstacleY[i], 20, 20);
     }
-    for (let i = 1; i < 6; i+=2) {
+    for (let i = 1; i < 4; i += 2) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        oddWidthObstacleY[i] = (i + 3) * 40;
+        oddWidthObstacleY[i] = (i + 1.5) * 80;
         ctx.strokeRect(oddWidthObstacleX, oddWidthObstacleY[i], 20, 20);
         ctx.fillRect(oddWidthObstacleX, oddWidthObstacleY[i], 20, 20);
+    }
+}
+
+function drawPoint() {
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(500, 250, 10, 0, 2 * Math.PI);
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+    ctx.stroke();
+    ctx.lineWidth = 5;
+    if (playerX <= 520 && playerX >= 480 && playerY <= 270 && playerY >= 230 && point == false) {
+        point = true;
+    }
+    if (point >= 1) {
+        ctx.strokeStyle = "white";
+        ctx.arc(500, 250, 10, 0, 2 * Math.PI);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.stroke();
     }
 }
 document.addEventListener('keydown', start);

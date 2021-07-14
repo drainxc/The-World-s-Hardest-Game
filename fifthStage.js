@@ -28,7 +28,6 @@ let oddWidthObstacleX = 500;
 let oddWidthObstacleY = [];
 let evenWidthObstacleX = 500;
 let evenWidthObstacleY = [];
-let alternately = [];
 
 for (let num = 0; num < 10; num++) {
 }
@@ -62,7 +61,7 @@ function drawPlayer() {
 }
 
 function start(event) {
-    if (event.key == 'a' || event.key == 'A') {
+    if (event.key == 'a' || event.key == 'A' || event.key == '4') {
         leftPressed = true;
     }
     else if (event.key == 'd' || event.key == 'D' || event.key == '6') {
@@ -71,7 +70,7 @@ function start(event) {
     else if (event.key == 'w' || event.key == 'W' || event.key == '8') {
         upPressed = true;
     }
-    else if (event.key == 's' || event.key == 'S' || event.key == '2') {
+    else if (event.key == 's' || event.key == 'S' || event.key == '2' || event.key == '5') {
         downPressed = true;
     }
 }
@@ -86,7 +85,7 @@ function stop(event) {
     else if (event.key == 'w' || event.key == 'W' || event.key == '8') {
         upPressed = false;
     }
-    else if (event.key == 's' || event.key == 'S' || event.key == '2') {
+    else if (event.key == 's' || event.key == 'S' || event.key == '2' || event.key == '5') {
         downPressed = false;
     }
 }
