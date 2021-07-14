@@ -186,5 +186,13 @@ function drawObstacle() {
         ctx.fillRect(oddWidthObstacleX, oddWidthObstacleY[i], 10, 10);
     }
 }
+
+function reload(event) {
+    if (event.key == 'r' || event.key == 'R') {
+        location.reload();
+    }
+}
+
 document.addEventListener('keydown', start);
 document.addEventListener('keyup', stop);
+document.addEventListener('keydown', reload);
