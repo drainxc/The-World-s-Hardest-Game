@@ -83,15 +83,20 @@ setInterval(function () {
         if (obstacleSpeed <= 47) {
             obstacleSpeed += 0.12;
         }
+        else if(playerSpeed >= 1.3) {
+            playerSpeed -= 0.001;
+        }
     }
     else {
         if (obstacleY < 10) {
             bounce = true;
-            
         }
         obstacleY -= obstacleSpeed;
         if (obstacleSpeed <= 47) {
             obstacleSpeed += 0.12;
+        }
+        else if(playerSpeed >= 1.3) {
+            playerSpeed -= 0.001;
         }
     }
     drawPlayer();

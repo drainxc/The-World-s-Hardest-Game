@@ -15,40 +15,37 @@ ctx.fillStyle = "black";
 ctx.fillRect(0, 0, 1000, 500)
 ctx.lineWidth = 5;
 
-let playerX = 5;
-let playerY = 5;
-let playerSpeed = 2;
-let heightObstacleSpeed = 14;
+let playerX = 255;
+let playerY = 255;
+let playerSpeed = 1;
+let heightObstacleSpeed = 7;
 let oddHeightObstacleX = [];
-let oddHeightObstacleY = 235;
+let oddHeightObstacleY = 350;
 let evenHeightObstacleX = [];
-let evenHeightObstacleY = 235;
-let widthObstacleSpeed = 29.8;
+let evenHeightObstacleY = 350;
+let widthObstacleSpeed = 16.5;
 let oddWidthObstacleX = 500;
 let oddWidthObstacleY = [];
 let evenWidthObstacleX = 500;
 let evenWidthObstacleY = [];
-let point = false;
-
-for (let num = 0; num < 10; num++) {
-}
+let num = 0.1;
 
 function drawPlayer() {
-    if (playerX < 3) playerX = 3;
-    if (playerY < 3) playerY = 3;
-    if (playerX > 978) playerX = 978;
-    if (playerY > 478) playerY = 478;
+    if (playerX < 255) playerX = 255;
+    if (playerY < 255) playerY = 255;
+    if (playerX > 685) playerX = 685;
+    if (playerY > 435) playerY = 435;
     for (let i = 0; i < 25; i++) {
-        if ((oddHeightObstacleX[i] + 20) >= playerX && (oddHeightObstacleX[i] - 20) <= playerX && oddHeightObstacleY + 20 >= playerY && oddHeightObstacleY - 20 <= playerY) {
+        if ((oddHeightObstacleX[i] + 10) >= playerX && (oddHeightObstacleX[i] - 10) <= playerX && oddHeightObstacleY + 10 >= playerY && oddHeightObstacleY - 10 <= playerY) {
             location.href = "gameover.html";
         }
-        if ((evenHeightObstacleX[i] + 20) >= playerX && (evenHeightObstacleX[i] - 20) <= playerX && evenHeightObstacleY + 20 >= playerY && evenHeightObstacleY - 20 <= playerY) {
+        if ((evenHeightObstacleX[i] + 10) >= playerX && (evenHeightObstacleX[i] - 10) <= playerX && evenHeightObstacleY + 10 >= playerY && evenHeightObstacleY - 10 <= playerY) {
             location.href = "gameover.html";
         }
-        if ((oddWidthObstacleX + 20) >= playerX && (oddWidthObstacleX - 20) <= playerX && oddWidthObstacleY[i] + 20 >= playerY && oddWidthObstacleY[i] - 20 <= playerY) {
+        if ((oddWidthObstacleX + 10) >= playerX && (oddWidthObstacleX - 10) <= playerX && oddWidthObstacleY[i] + 10 >= playerY && oddWidthObstacleY[i] - 10 <= playerY) {
             location.href = "gameover.html";
         }
-        if ((evenWidthObstacleX + 20) >= playerX && (evenWidthObstacleX - 20) <= playerX && evenWidthObstacleY[i] + 20 >= playerY && evenWidthObstacleY[i] - 20 <= playerY) {
+        if ((evenWidthObstacleX + 10) >= playerX && (evenWidthObstacleX - 10) <= playerX && evenWidthObstacleY[i] + 10 >= playerY && evenWidthObstacleY[i] - 10 <= playerY) {
             location.href = "gameover.html";
         }
         if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500 && point == true) {
@@ -57,8 +54,8 @@ function drawPlayer() {
     }
     ctx.strokeStyle = 'black';
     ctx.fillStyle = 'red';
-    ctx.strokeRect(playerX, playerY, 20, 20);
-    ctx.fillRect(playerX, playerY, 20, 20);
+    ctx.strokeRect(playerX, playerY, 10, 10);
+    ctx.fillRect(playerX, playerY, 10, 10);
 }
 
 function start(event) {
@@ -94,20 +91,19 @@ function stop(event) {
 setInterval(function () {
     ctx.clearRect(0, 0, 1000, 500);
     ctx.fillStyle = "rgb(162, 255, 209)";
-    ctx.fillRect(0, 0, 100, 100);
-    ctx.fillRect(900, 400, 100, 100);
-    drawPoint();
+    ctx.fillRect(250, 250, 50, 50)
+    ctx.fillRect(650, 400, 50, 50)
 
-    if (oddHeightObstacleY > 465) {
+    if (oddHeightObstacleY > 450) {
         heightBounce = false;
     }
-    else if (oddHeightObstacleY < 10) {
+    else if (oddHeightObstacleY < 250) {
         heightBounce = true;
     }
-    if (oddWidthObstacleX > 978) {
+    if (oddWidthObstacleX > 728) {
         widthBounce = false;
     }
-    else if (oddWidthObstacleX < 10) {
+    else if (oddWidthObstacleX < 250) {
         widthBounce = true;
     }
 
@@ -127,7 +123,8 @@ setInterval(function () {
         oddWidthObstacleX -= widthObstacleSpeed;
         evenWidthObstacleX += widthObstacleSpeed;
     }
-
+    if (num <= 2.5)
+    num += 0.01;
     drawPlayer();
     drawObstacle();
 }, 20);
@@ -135,9 +132,8 @@ setInterval(function () {
 function move() {
     ctx.clearRect(0, 0, 1000, 500);
     ctx.fillStyle = "rgb(162, 255, 209)";
-    ctx.fillRect(0, 0, 100, 100);
-    ctx.fillRect(900, 400, 100, 100);
-    drawPoint();
+    ctx.fillRect(250, 250, 50, 50)
+    ctx.fillRect(650, 400, 50, 50)
 
     if (leftPressed) {
         playerX -= playerSpeed;
@@ -151,6 +147,9 @@ function move() {
     if (downPressed) {
         playerY += playerSpeed;
     }
+    ctx.translate(500, 250);
+    ctx.rotate((Math.PI / 180) * num);
+    ctx.translate(-500, -250);
     drawPlayer();
     drawObstacle();
     setTimeout(move, 10);
@@ -158,53 +157,33 @@ function move() {
 move();
 
 function drawObstacle() {
-    for (let i = 0; i < 18; i += 2) {
+    for (let i = 0; i < 16; i += 2) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        evenHeightObstacleX[i] = (i + 2.35) * 45;
-        ctx.strokeRect(evenHeightObstacleX[i], evenHeightObstacleY, 20, 20);
-        ctx.fillRect(evenHeightObstacleX[i], evenHeightObstacleY, 20, 20);
+        evenHeightObstacleX[i] = (i + 16) * 20;
+        ctx.strokeRect(evenHeightObstacleX[i], evenHeightObstacleY, 10, 10);
+        ctx.fillRect(evenHeightObstacleX[i], evenHeightObstacleY, 10, 10);
     }
-    for (let i = 1; i < 18; i += 2) {
+    for (let i = 1; i < 16; i += 2) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        oddHeightObstacleX[i] = (i + 2.35) * 45;
-        ctx.strokeRect(oddHeightObstacleX[i], oddHeightObstacleY, 20, 20);
-        ctx.fillRect(oddHeightObstacleX[i], oddHeightObstacleY, 20, 20);
+        oddHeightObstacleX[i] = (i + 16) * 20;
+        ctx.strokeRect(oddHeightObstacleX[i], oddHeightObstacleY, 10, 10);
+        ctx.fillRect(oddHeightObstacleX[i], oddHeightObstacleY, 10, 10);
     }
     for (let i = 0; i < 4; i += 2) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        evenWidthObstacleY[i] = (i + 1.5) * 80;
-        ctx.strokeRect(evenWidthObstacleX, evenWidthObstacleY[i], 20, 20);
-        ctx.fillRect(evenWidthObstacleX, evenWidthObstacleY[i], 20, 20);
+        evenWidthObstacleY[i] = (i + 12.3) * 25;
+        ctx.strokeRect(evenWidthObstacleX, evenWidthObstacleY[i], 10, 10);
+        ctx.fillRect(evenWidthObstacleX, evenWidthObstacleY[i], 10, 10);
     }
     for (let i = 1; i < 4; i += 2) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        oddWidthObstacleY[i] = (i + 1.5) * 80;
-        ctx.strokeRect(oddWidthObstacleX, oddWidthObstacleY[i], 20, 20);
-        ctx.fillRect(oddWidthObstacleX, oddWidthObstacleY[i], 20, 20);
-    }
-}
-
-function drawPoint() {
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.arc(500, 250, 10, 0, 2 * Math.PI);
-    ctx.fillStyle = "yellow";
-    ctx.fill();
-    ctx.stroke();
-    ctx.lineWidth = 5;
-    if (playerX <= 520 && playerX >= 480 && playerY <= 270 && playerY >= 230 && point == false) {
-        point = true;
-    }
-    if (point >= 1) {
-        ctx.strokeStyle = "white";
-        ctx.arc(500, 250, 10, 0, 2 * Math.PI);
-        ctx.fillStyle = "white";
-        ctx.fill();
-        ctx.stroke();
+        oddWidthObstacleY[i] = (i + 12.3) * 25;
+        ctx.strokeRect(oddWidthObstacleX, oddWidthObstacleY[i], 10, 10);
+        ctx.fillRect(oddWidthObstacleX, oddWidthObstacleY[i], 10, 10);
     }
 }
 document.addEventListener('keydown', start);
