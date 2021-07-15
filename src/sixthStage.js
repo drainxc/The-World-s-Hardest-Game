@@ -52,7 +52,7 @@ function drawPlayer() {
             location.href = "gameover.html";
         }
         if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500 && point == true) {
-            location.href = "file:///C:/Users/user/Desktop/World's%20Hardest%20Game/seventhStage.html";
+            location.href = "file:///C:/Users/user/Desktop/World's%20Hardest%20Game/src/seventhStage.html";
         }
     }
     ctx.strokeStyle = 'black';

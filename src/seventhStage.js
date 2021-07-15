@@ -48,8 +48,8 @@ function drawPlayer() {
         if ((evenWidthObstacleX + 10) >= playerX && (evenWidthObstacleX - 10) <= playerX && evenWidthObstacleY[i] + 10 >= playerY && evenWidthObstacleY[i] - 10 <= playerY) {
             location.href = "gameover.html";
         }
-        if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500 && point == true) {
-            location.href = "file:///C:/Users/user/Desktop/World's%20Hardest%20Game/seventhStage.html";
+        if (playerX >= 650 && playerX <= 1000 && playerY >= 400 && playerY <= 500) {
+            location.href = "file:///C:/Users/user/Desktop/World's%20Hardest%20Game/src/eighthStage.html";
         }
     }
     ctx.strokeStyle = 'black';
@@ -123,8 +123,8 @@ setInterval(function () {
         oddWidthObstacleX -= widthObstacleSpeed;
         evenWidthObstacleX += widthObstacleSpeed;
     }
-    if (num <= 2.5)
-    num += 0.01;
+    if (num <= 4)
+    num += 0.015;
     drawPlayer();
     drawObstacle();
 }, 20);

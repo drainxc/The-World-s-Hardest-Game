@@ -1,0 +1,41 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    background-image: url(../asset/gameover.jpg);
+    background-repeat: no-repeat;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+#image {
+    background-image: url("../asset/gameover.jpg");
+    height: 100%; 
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#before {
+    margin-left: 50px;
+    margin-right: 80px;
+    margin-top: 400px;
+    width: 100px;
+    height: 50px;
+}
+
+#exit {
+    margin-top: 400px;
+    margin-right: 75px;
+    width: 100px;
+    height: 50px;
+}

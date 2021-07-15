@@ -8,7 +8,8 @@ let leftPressed = false;
 let rightPressed = false;
 let upPressed = false;
 let downPressed = false;
-let bounce = true;
+let heightBounce = true;
+let widthBounce = true;
 
 ctx.fillStyle = "black";
 ctx.fillRect(0, 0, 1000, 500)
@@ -17,9 +18,13 @@ ctx.lineWidth = 5;
 let playerX = 5;
 let playerY = 5;
 let playerSpeed = 2;
-let obstacleSpeed = 14;
-let obstacleX = [];
-let obstacleY = 235;
+let heightObstacleSpeed = 14;
+let heightObstacleX = [];
+let heightObstacleY = 235;
+let widthObstacleSpeed = 29.8;
+let widthObstacleX = 500;
+let widthObstacleY = [];
+ctx.globalAlpha = 1;
 
 function drawPlayer() {
     if (playerX < 3) playerX = 3;
@@ -27,12 +32,15 @@ function drawPlayer() {
     if (playerX > 978) playerX = 978;
     if (playerY > 478) playerY = 478;
     for (let i = 0; i < 25; i++) {
-        if ((obstacleX[i] + 20) >= playerX && (obstacleX[i] - 20) <= playerX && obstacleY + 20 >= playerY && obstacleY - 20 <= playerY) {
+        if ((heightObstacleX[i] + 20) >= playerX && (heightObstacleX[i] - 20) <= playerX && heightObstacleY + 20 >= playerY && heightObstacleY - 20 <= playerY) {
             location.href="gameover.html";
         }
-    }
-    if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500) {
-        location.href="file:///C:/Users/user/Desktop/World's%20Hardest%20Game/secondStage.html";
+        if ((widthObstacleX + 20) >= playerX && (widthObstacleX - 20) <= playerX && widthObstacleY[i] + 20 >= playerY && widthObstacleY[i] - 20 <= playerY) {
+            location.href="gameover.html";
+        }
+        if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500) {
+            location.href="file:///C:/Users/user/Desktop/World's%20Hardest%20Game/src/sixthStage.html";
+        }
     }
     ctx.strokeStyle = 'black';
     ctx.fillStyle = 'red';
@@ -75,20 +83,35 @@ setInterval(function () {
     ctx.fillStyle = "rgb(162, 255, 209)";
     ctx.fillRect(0, 0, 100, 100)
     ctx.fillRect(900, 400, 100, 100)
-    if (bounce) {
-        if (obstacleY > 465) {
-            bounce = false;
+    if (heightBounce) {
+        if (heightObstacleY > 465) {
+            heightBounce = false;
         }
-        obstacleY += obstacleSpeed;
+        heightObstacleY += heightObstacleSpeed;
     }
     else {
-        if (obstacleY < 10) {
-            bounce = true;
+        if (heightObstacleY < 10) {
+            heightBounce = true;
         }
-        obstacleY -= obstacleSpeed;
+        heightObstacleY -= heightObstacleSpeed;
     }
+    if (widthBounce) {
+        if (widthObstacleX > 978) {
+            widthBounce = false;
+        }
+        widthObstacleX += widthObstacleSpeed;
+    }
+    else {
+        if (widthObstacleX < 10) {
+            widthBounce = true;
+        }
+        widthObstacleX -= widthObstacleSpeed;
+    }
+    ctx.globalAlpha -= 0.0035;
+    console.log(ctx.globalAlpha);
     drawPlayer();
-    drawObstacle();
+    drawWidthObstacle();
+    drawheightObstacle();
 }, 20);
 
 function move() {
@@ -109,20 +132,28 @@ function move() {
         playerY += playerSpeed;
     }
     drawPlayer();
-    drawObstacle();
+    drawheightObstacle();
+    drawWidthObstacle();
     setTimeout(move, 10);
 }
 move();
 
-
-
-function drawObstacle() {
-    for (let i = 0; i < 5; i++) {
+function drawheightObstacle() {
+    for (let i = 0; i < 10; i++) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        obstacleX[i] = (i + 1) * 160;
-        ctx.strokeRect(obstacleX[i], obstacleY, 20, 20);
-        ctx.fillRect(obstacleX[i], obstacleY, 20, 20);
+        heightObstacleX[i] = (i + 1.5) * 80;
+        ctx.strokeRect(heightObstacleX[i], heightObstacleY, 20, 20);
+        ctx.fillRect(heightObstacleX[i], heightObstacleY, 20, 20);
+    }
+}
+function drawWidthObstacle() {
+    for (let i = 0; i < 4; i++) {
+        ctx.strokeStyle = 'black';
+        ctx.fillStyle = 'blue';
+        widthObstacleY[i] = (i + 1.5) * 80;
+        ctx.strokeRect(widthObstacleX, widthObstacleY[i], 20, 20);
+        ctx.fillRect(widthObstacleX, widthObstacleY[i], 20, 20);
     }
 }
 

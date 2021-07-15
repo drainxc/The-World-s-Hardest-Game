@@ -8,8 +8,7 @@ let leftPressed = false;
 let rightPressed = false;
 let upPressed = false;
 let downPressed = false;
-let heightBounce = true;
-let widthBounce = true;
+let bounce = true;
 
 ctx.fillStyle = "black";
 ctx.fillRect(0, 0, 1000, 500)
@@ -18,12 +17,9 @@ ctx.lineWidth = 5;
 let playerX = 5;
 let playerY = 5;
 let playerSpeed = 2;
-let heightObstacleSpeed = 14;
-let heightObstacleX = [];
-let heightObstacleY = 235;
-let widthObstacleSpeed = 29.8;
-let widthObstacleX = 500;
-let widthObstacleY = [];
+let obstacleSpeed = 7;
+let obstacleX = [];
+let obstacleY = 235;
 
 function drawPlayer() {
     if (playerX < 3) playerX = 3;
@@ -31,15 +27,12 @@ function drawPlayer() {
     if (playerX > 978) playerX = 978;
     if (playerY > 478) playerY = 478;
     for (let i = 0; i < 25; i++) {
-        if ((heightObstacleX[i] + 20) >= playerX && (heightObstacleX[i] - 20) <= playerX && heightObstacleY + 20 >= playerY && heightObstacleY - 20 <= playerY) {
+        if ((obstacleX[i] + 20) >= playerX && (obstacleX[i] - 20) <= playerX && obstacleY + 20 >= playerY && obstacleY - 20 <= playerY) {
             location.href="gameover.html";
         }
-        if ((widthObstacleX + 20) >= playerX && (widthObstacleX - 20) <= playerX && widthObstacleY[i] + 20 >= playerY && widthObstacleY[i] - 20 <= playerY) {
-            location.href="gameover.html";
-        }
-        if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500) {
-            location.href="file:///C:/Users/user/Desktop/World's%20Hardest%20Game/fifthStage.html";
-        }
+    }
+    if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500) {
+        location.href="file:///C:/Users/user/Desktop/World's%20Hardest%20Game/src/fourthStage.html";
     }
     ctx.strokeStyle = 'black';
     ctx.fillStyle = 'red';
@@ -48,7 +41,7 @@ function drawPlayer() {
 }
 
 function start(event) {
-    if (event.key == 'a' || event.key == 'A' || event.key == '4') {
+    if (event.key == 'a' || event.key == 'A' || event.key == '') {
         leftPressed = true;
     }
     else if (event.key == 'd' || event.key == 'D' || event.key == '6') {
@@ -82,33 +75,32 @@ setInterval(function () {
     ctx.fillStyle = "rgb(162, 255, 209)";
     ctx.fillRect(0, 0, 100, 100)
     ctx.fillRect(900, 400, 100, 100)
-    if (heightBounce) {
-        if (heightObstacleY > 465) {
-            heightBounce = false;
+    if (bounce) {
+        if (obstacleY > 465) {
+            bounce = false;
         }
-        heightObstacleY += heightObstacleSpeed;
+        obstacleY += obstacleSpeed;
+        if (obstacleSpeed <= 47) {
+            obstacleSpeed += 0.12;
+        }
+        else if(playerSpeed >= 1.3) {
+            playerSpeed -= 0.001;
+        }
     }
     else {
-        if (heightObstacleY < 10) {
-            heightBounce = true;
+        if (obstacleY < 10) {
+            bounce = true;
         }
-        heightObstacleY -= heightObstacleSpeed;
-    }
-    if (widthBounce) {
-        if (widthObstacleX > 978) {
-            widthBounce = false;
+        obstacleY -= obstacleSpeed;
+        if (obstacleSpeed <= 47) {
+            obstacleSpeed += 0.12;
         }
-        widthObstacleX += widthObstacleSpeed;
-    }
-    else {
-        if (widthObstacleX < 10) {
-            widthBounce = true;
+        else if(playerSpeed >= 1.3) {
+            playerSpeed -= 0.001;
         }
-        widthObstacleX -= widthObstacleSpeed;
     }
     drawPlayer();
-    drawWidthObstacle();
-    drawheightObstacle();
+    drawObstacle();
 }, 20);
 
 function move() {
@@ -129,28 +121,20 @@ function move() {
         playerY += playerSpeed;
     }
     drawPlayer();
-    drawheightObstacle();
-    drawWidthObstacle();
+    drawObstacle();
     setTimeout(move, 10);
 }
 move();
 
-function drawheightObstacle() {
+
+
+function drawObstacle() {
     for (let i = 0; i < 10; i++) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        heightObstacleX[i] = (i + 1.5) * 80;
-        ctx.strokeRect(heightObstacleX[i], heightObstacleY, 20, 20);
-        ctx.fillRect(heightObstacleX[i], heightObstacleY, 20, 20);
-    }
-}
-function drawWidthObstacle() {
-    for (let i = 0; i < 4; i++) {
-        ctx.strokeStyle = 'black';
-        ctx.fillStyle = 'blue';
-        widthObstacleY[i] = (i + 1.5) * 80;
-        ctx.strokeRect(widthObstacleX, widthObstacleY[i], 20, 20);
-        ctx.fillRect(widthObstacleX, widthObstacleY[i], 20, 20);
+        obstacleX[i] = (i + 1.5) * 80;
+        ctx.strokeRect(obstacleX[i], obstacleY, 20, 20);
+        ctx.fillRect(obstacleX[i], obstacleY, 20, 20);
     }
 }
 
