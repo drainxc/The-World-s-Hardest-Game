@@ -107,7 +107,7 @@ setInterval(function () {
         }
         widthObstacleX -= widthObstacleSpeed;
     }
-    ctx.globalAlpha -= 0.0035;
+    ctx.globalAlpha -= 0.003;
     drawPlayer();
     drawWidthObstacle();
     drawheightObstacle();
