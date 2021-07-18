@@ -92,10 +92,10 @@ setInterval(function () {
             bounce = true;
         }
         obstacleY -= obstacleSpeed;
-        if (obstacleSpeed <= 47) {
-            obstacleSpeed += 0.12;
+        if (obstacleSpeed <= 45) {
+            obstacleSpeed += 0.35;
         }
-        if(obstacleSpeed >= 5 && playerSpeed > 0.5) {
+        if(obstacleSpeed >= 5 && playerSpeed > 2) {
             playerSpeed -= 0.0025;
         }
     }

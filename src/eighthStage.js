@@ -8,8 +8,6 @@ let leftPressed = false;
 let rightPressed = false;
 let upPressed = false;
 let downPressed = false;
-let heightBounce = true;
-let widthBounce = true;
 
 ctx.fillStyle = "black";
 ctx.fillRect(0, 0, 1000, 500)
@@ -18,12 +16,11 @@ ctx.lineWidth = 5;
 let playerX = 5;
 let playerY = 5;
 let playerSpeed = 2;
-let heightObstacleSpeed = 14;
-let heightObstacleX = [];
-let heightObstacleY = 235;
-let widthObstacleSpeed = 29.8;
-let widthObstacleX = 500;
-let widthObstacleY = [];
+let ObstacleSpeed = 10;
+let ObstacleX = [];
+let ObstacleY = 450;
+let num = 0;
+let num1 = 0;
 
 function drawPlayer() {
     if (playerX < 3) playerX = 3;
@@ -31,14 +28,13 @@ function drawPlayer() {
     if (playerX > 978) playerX = 978;
     if (playerY > 478) playerY = 478;
     for (let i = 0; i < 25; i++) {
-        if ((heightObstacleX[i] + 20) >= playerX && (heightObstacleX[i] - 20) <= playerX && heightObstacleY + 20 >= playerY && heightObstacleY - 20 <= playerY) {
-            location.href="gameover.html";
-        }
-        if ((widthObstacleX + 20) >= playerX && (widthObstacleX - 20) <= playerX && widthObstacleY[i] + 20 >= playerY && widthObstacleY[i] - 20 <= playerY) {
-            location.href="gameover.html";
-        }
-        if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500) {
-            location.href="file:///C:/Users/user/Desktop/World's%20Hardest%20Game/src/fifthStage.html";
+        for (j = 0; j < 781; j += 130) {
+            if ((ObstacleX[i] + 20) >= playerX && (ObstacleX[i] - 20) <= playerX && (ObstacleY - j) + 20 >= playerY && (ObstacleY - j) - 20 <= playerY) {
+                location.href = "gameover.html";
+            }
+            if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500) {
+                location.href = "file:///C:/Users/user/Desktop/World's%20Hardest%20Game/src/fifthStage.html";
+            }
         }
     }
     ctx.strokeStyle = 'black';
@@ -49,66 +45,51 @@ function drawPlayer() {
 
 function start(event) {
     if (event.key == 'a' || event.key == 'A' || event.key == '4') {
-        rightPressed = true;
-    }
-    else if (event.key == 'd' || event.key == 'D' || event.key == '6') {
         leftPressed = true;
     }
+    else if (event.key == 'd' || event.key == 'D' || event.key == '6') {
+        rightPressed = true;
+    }
     else if (event.key == 'w' || event.key == 'W' || event.key == '8') {
-        downPressed = true;
+        upPressed = true;
     }
     else if (event.key == 's' || event.key == 'S' || event.key == '2' || event.key == '5') {
-        upPressed = true;
+        downPressed = true;
     }
 }
 
 function stop(event) {
     if (event.key == 'a' || event.key == 'A' || event.key == '4') {
-        rightPressed = false;
-    }
-    else if (event.key == 'd' || event.key == 'D' || event.key == '6') {
         leftPressed = false;
     }
+    else if (event.key == 'd' || event.key == 'D' || event.key == '6') {
+        rightPressed = false;
+    }
     else if (event.key == 'w' || event.key == 'W' || event.key == '8') {
-        downPressed = false;
+        upPressed = false;
     }
     else if (event.key == 's' || event.key == 'S' || event.key == '2' || event.key == '5') {
-        upPressed = false;
+        downPressed = false;
     }
 }
 
 setInterval(function () {
     ctx.clearRect(0, 0, 1000, 500);
     ctx.fillStyle = "rgb(162, 255, 209)";
-    ctx.fillRect(0, 0, 100, 100)
-    ctx.fillRect(900, 400, 100, 100)
-    if (heightBounce) {
-        if (heightObstacleY > 465) {
-            heightBounce = false;
-        }
-        heightObstacleY += heightObstacleSpeed;
-    }
-    else {
-        if (heightObstacleY < 10) {
-            heightBounce = true;
-        }
-        heightObstacleY -= heightObstacleSpeed;
-    }
-    if (widthBounce) {
-        if (widthObstacleX > 978) {
-            widthBounce = false;
-        }
-        widthObstacleX += widthObstacleSpeed;
-    }
-    else {
-        if (widthObstacleX < 10) {
-            widthBounce = true;
-        }
-        widthObstacleX -= widthObstacleSpeed;
-    }
+    ctx.fillRect(0, 0, 100, 100);
+    ctx.fillRect(900, 400, 100, 100);
+    num++;
     drawPlayer();
-    drawWidthObstacle();
-    drawheightObstacle();
+    drawObstacleSub();
+    if (num > 20) {
+        ObstacleY -= ObstacleSpeed;
+        if (num > 39) {
+            num = 0;
+        }
+    }
+    else {
+        ObstacleY += ObstacleSpeed;
+    }
 }, 20);
 
 function move() {
@@ -129,37 +110,62 @@ function move() {
         playerY += playerSpeed;
     }
     drawPlayer();
-    drawheightObstacle();
-    drawWidthObstacle();
+    drawObstacleSub();
     setTimeout(move, 10);
 }
 move();
 
-function drawheightObstacle() {
+function drawObstacleSub() {
+    if (num1 == 0) {
+        ObstacleY -= 780;
+        num1++;
+        drawObstacleMain();
+    }
+    if (num1 == 1) {
+        ObstacleY += 130
+        num1++;
+        drawObstacleMain();
+    }
+    if (num1 == 2) {
+        ObstacleY += 130
+        num1++;
+        drawObstacleMain();
+    }
+    if (num1 == 3) {
+        ObstacleY += 130
+        num1++;
+        drawObstacleMain();
+    }
+    if (num1 == 4) {
+        ObstacleY += 130
+        num1++;
+        drawObstacleMain();
+    }
+    if (num1 == 5) {
+        ObstacleY += 130
+        num1++;
+        drawObstacleMain();
+    }
+    if (num1 == 6) {
+        ObstacleY += 130
+        num1 -= 6;
+        drawObstacleMain();
+    }
+}
+function drawObstacleMain() {
     for (let i = 0; i < 10; i++) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        heightObstacleX[i] = (i + 1.5) * 80;
-        ctx.strokeRect(heightObstacleX[i], heightObstacleY, 20, 20);
-        ctx.fillRect(heightObstacleX[i], heightObstacleY, 20, 20);
+        ObstacleX[i] = (i + 1.5) * 80;
+        ctx.strokeRect(ObstacleX[i], ObstacleY, 20, 20);
+        ctx.fillRect(ObstacleX[i], ObstacleY, 20, 20);
     }
 }
-function drawWidthObstacle() {
-    for (let i = 0; i < 4; i++) {
-        ctx.strokeStyle = 'black';
-        ctx.fillStyle = 'blue';
-        widthObstacleY[i] = (i + 1.5) * 80;
-        ctx.strokeRect(widthObstacleX, widthObstacleY[i], 20, 20);
-        ctx.fillRect(widthObstacleX, widthObstacleY[i], 20, 20);
-    }
-}
-
 function reload(event) {
     if (event.key == 'r' || event.key == 'R') {
         location.reload();
     }
 }
-
 document.addEventListener('keydown', start);
 document.addEventListener('keyup', stop);
 document.addEventListener('keydown', reload);
