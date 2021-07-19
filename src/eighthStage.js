@@ -28,7 +28,7 @@ function drawPlayer() {
     if (playerX > 978) playerX = 978;
     if (playerY > 478) playerY = 478;
     for (let i = 0; i < 25; i++) {
-        for (j = 0; j < 751; j += 125) {
+        for (j = 0; j < 721; j += 120) {
             if ((ObstacleX[i] + 20) >= playerX && (ObstacleX[i] - 20) <= playerX && (ObstacleY - j) + 20 >= playerY && (ObstacleY - j) - 20 <= playerY) {
                 location.href = "gameover.html";
             }
@@ -117,37 +117,37 @@ move();
 
 function drawObstacleSub() {
     if (num1 == 0) {
-        ObstacleY -= 750;
+        ObstacleY -= 720;
         num1++;
         drawObstacleMain();
     }
     if (num1 == 1) {
-        ObstacleY += 125;
+        ObstacleY += 120;
         num1++;
         drawObstacleMain();
     }
     if (num1 == 2) {
-        ObstacleY += 125;
+        ObstacleY += 120;
         num1++;
         drawObstacleMain();
     }
     if (num1 == 3) {
-        ObstacleY += 125;
+        ObstacleY += 120;
         num1++;
         drawObstacleMain();
     }
     if (num1 == 4) {
-        ObstacleY += 125;
+        ObstacleY += 120;
         num1++;
         drawObstacleMain();
     }
     if (num1 == 5) {
-        ObstacleY += 125;
+        ObstacleY += 120;
         num1++;
         drawObstacleMain();
     }
     if (num1 == 6) {
-        ObstacleY += 125;
+        ObstacleY += 120;
         num1 -= 6;
         drawObstacleMain();
     }

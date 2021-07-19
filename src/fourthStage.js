@@ -18,10 +18,10 @@ ctx.lineWidth = 5;
 let playerX = 5;
 let playerY = 5;
 let playerSpeed = 2;
-let heightObstacleSpeed = 14;
+let heightObstacleSpeed = 28;
 let heightObstacleX = [];
 let heightObstacleY = 235;
-let widthObstacleSpeed = 29.8;
+let widthObstacleSpeed = 59.6;
 let widthObstacleX = 500;
 let widthObstacleY = [];
 
@@ -49,31 +49,31 @@ function drawPlayer() {
 
 function start(event) {
     if (event.key == 'a' || event.key == 'A' || event.key == '4') {
-        rightPressed = true;
-    }
-    else if (event.key == 'd' || event.key == 'D' || event.key == '6') {
         leftPressed = true;
     }
+    else if (event.key == 'd' || event.key == 'D' || event.key == '6') {
+        rightPressed = true;
+    }
     else if (event.key == 'w' || event.key == 'W' || event.key == '8') {
-        downPressed = true;
+        upPressed = true;
     }
     else if (event.key == 's' || event.key == 'S' || event.key == '2' || event.key == '5') {
-        upPressed = true;
+        downPressed = true;
     }
 }
 
 function stop(event) {
     if (event.key == 'a' || event.key == 'A' || event.key == '4') {
-        rightPressed = false;
-    }
-    else if (event.key == 'd' || event.key == 'D' || event.key == '6') {
         leftPressed = false;
     }
+    else if (event.key == 'd' || event.key == 'D' || event.key == '6') {
+        rightPressed = false;
+    }
     else if (event.key == 'w' || event.key == 'W' || event.key == '8') {
-        downPressed = false;
+        upPressed = false;
     }
     else if (event.key == 's' || event.key == 'S' || event.key == '2' || event.key == '5') {
-        upPressed = false;
+        downPressed = false;
     }
 }
 
@@ -117,10 +117,10 @@ function move() {
     ctx.fillRect(0, 0, 100, 100)
     ctx.fillRect(900, 400, 100, 100)
     if (leftPressed) {
-        playerX -= playerSpeed;
+        playerX -= playerSpeed + 1;
     }
     if (rightPressed) {
-        playerX += playerSpeed;
+        playerX += playerSpeed + 2;
     }
     if (upPressed) {
         playerY -= playerSpeed;
@@ -128,6 +128,7 @@ function move() {
     if (downPressed) {
         playerY += playerSpeed;
     }
+    playerX += 2;
     drawPlayer();
     drawheightObstacle();
     drawWidthObstacle();
