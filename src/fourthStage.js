@@ -18,10 +18,10 @@ ctx.lineWidth = 5;
 let playerX = 5;
 let playerY = 5;
 let playerSpeed = 2;
-let heightObstacleSpeed = 28;
+let heightObstacleSpeed = 21;
 let heightObstacleX = [];
 let heightObstacleY = 235;
-let widthObstacleSpeed = 59.6;
+let widthObstacleSpeed = 44;
 let widthObstacleX = 500;
 let widthObstacleY = [];
 
@@ -117,18 +117,19 @@ function move() {
     ctx.fillRect(0, 0, 100, 100)
     ctx.fillRect(900, 400, 100, 100)
     if (leftPressed) {
-        playerX -= playerSpeed + 1;
+        playerX -= playerSpeed + 0.5;
     }
     if (rightPressed) {
-        playerX += playerSpeed + 2;
+        playerX += playerSpeed + 1;
     }
     if (upPressed) {
-        playerY -= playerSpeed;
+        playerY -= playerSpeed + 1;
     }
     if (downPressed) {
-        playerY += playerSpeed;
+        playerY += playerSpeed + 0.5;
     }
-    playerX += 2;
+    playerX += 1.5;
+    playerY -= 1.5;
     drawPlayer();
     drawheightObstacle();
     drawWidthObstacle();
