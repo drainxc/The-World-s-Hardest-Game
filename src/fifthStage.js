@@ -37,15 +37,15 @@ function drawPlayer() {
         }
         if ((widthObstacleX + 20) >= playerX && (widthObstacleX - 20) <= playerX && widthObstacleY[i] + 20 >= playerY && widthObstacleY[i] - 20 <= playerY) {
             location.href="gameover.html";
-        }
+        } // 게임오버 장면
         if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500) {
             location.href="file:///C:/Users/user/Desktop/World's%20Hardest%20Game/src/sixthStage.html";
-        }
+        } // 다음 단계 이동
     }
     ctx.strokeStyle = 'black';
     ctx.fillStyle = 'red';
     ctx.strokeRect(playerX, playerY, 20, 20);
-    ctx.fillRect(playerX, playerY, 20, 20);
+    ctx.fillRect(playerX, playerY, 20, 20); // 플레이어 그리기
 }
 
 function start(event) {
@@ -60,7 +60,7 @@ function start(event) {
     }
     else if (event.key == 's' || event.key == 'S' || event.key == '2' || event.key == '5') {
         downPressed = true;
-    }
+    } //플레이어 이동
 }
 
 function stop(event) {
@@ -75,7 +75,7 @@ function stop(event) {
     }
     else if (event.key == 's' || event.key == 'S' || event.key == '2' || event.key == '5') {
         downPressed = false;
-    }
+    }//플레이어 스탑
 }
 
 setInterval(function () {
@@ -106,7 +106,7 @@ setInterval(function () {
             widthBounce = true;
         }
         widthObstacleX -= widthObstacleSpeed;
-    }
+    } // 장애물 이동
     ctx.globalAlpha -= 0.003;
     drawPlayer();
     drawWidthObstacle();
@@ -134,7 +134,7 @@ function move() {
     drawheightObstacle();
     drawWidthObstacle();
     setTimeout(move, 10);
-}
+} // 플레이어 이동
 move();
 
 function drawheightObstacle() {
@@ -153,14 +153,14 @@ function drawWidthObstacle() {
         widthObstacleY[i] = (i + 1.5) * 80;
         ctx.strokeRect(widthObstacleX, widthObstacleY[i], 20, 20);
         ctx.fillRect(widthObstacleX, widthObstacleY[i], 20, 20);
-    }
+    } // 장애물 그리기
 }
 
 function reload(event) {
     if (event.key == 'r' || event.key == 'R') {
         location.reload();
     }
-}
+} // 재시작
 
 document.addEventListener('keydown', start);
 document.addEventListener('keyup', stop);

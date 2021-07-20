@@ -47,15 +47,15 @@ function drawPlayer() {
         }
         if ((evenWidthObstacleX + 10) >= playerX && (evenWidthObstacleX - 10) <= playerX && evenWidthObstacleY[i] + 10 >= playerY && evenWidthObstacleY[i] - 10 <= playerY) {
             location.href = "gameover.html";
-        }
+        } // 게임오버 장면
         if (playerX >= 650 && playerX <= 1000 && playerY >= 400 && playerY <= 500) {
             location.href = "file:///C:/Users/user/Desktop/World's%20Hardest%20Game/src/eighthStage.html";
-        }
+        } // 다음 단계 이동
     }
     ctx.strokeStyle = 'black';
     ctx.fillStyle = 'red';
     ctx.strokeRect(playerX, playerY, 10, 10);
-    ctx.fillRect(playerX, playerY, 10, 10);
+    ctx.fillRect(playerX, playerY, 10, 10); // 플레이어 그리기
 }
 
 function start(event) {
@@ -70,7 +70,7 @@ function start(event) {
     }
     else if (event.key == 's' || event.key == 'S' || event.key == '2' || event.key == '5') {
         downPressed = true;
-    }
+    } //플레이어 이동
 }
 
 function stop(event) {
@@ -85,7 +85,7 @@ function stop(event) {
     }
     else if (event.key == 's' || event.key == 'S' || event.key == '2' || event.key == '5') {
         downPressed = false;
-    }
+    }//플레이어 스탑
 }
 
 setInterval(function () {
@@ -122,7 +122,7 @@ setInterval(function () {
     else {
         oddWidthObstacleX -= widthObstacleSpeed;
         evenWidthObstacleX += widthObstacleSpeed;
-    }
+    } // 장애물 이동
     if (num <= 4)
     num += 0.015;
     drawPlayer();
@@ -153,7 +153,7 @@ function move() {
     drawPlayer();
     drawObstacle();
     setTimeout(move, 10);
-}
+} // 플레이어 이동
 move();
 
 function drawObstacle() {
@@ -184,14 +184,14 @@ function drawObstacle() {
         oddWidthObstacleY[i] = (i + 12.3) * 25;
         ctx.strokeRect(oddWidthObstacleX, oddWidthObstacleY[i], 10, 10);
         ctx.fillRect(oddWidthObstacleX, oddWidthObstacleY[i], 10, 10);
-    }
+    } // 장애물 그리기
 }
 
 function reload(event) {
     if (event.key == 'r' || event.key == 'R') {
         location.reload();
     }
-}
+} // 재시작
 
 document.addEventListener('keydown', start);
 document.addEventListener('keyup', stop);
