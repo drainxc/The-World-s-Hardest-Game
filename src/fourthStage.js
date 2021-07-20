@@ -129,7 +129,7 @@ function move() {
         playerY += playerSpeed + 0.5;
     }
     playerX += 1.5;
-    playerY -= 1.5;
+    playerY -= 1.5; // 바람 표현
     drawPlayer();
     drawheightObstacle();
     drawWidthObstacle();

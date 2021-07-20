@@ -151,7 +151,7 @@ function drawObstacleSub() {
         num1 -= 6;
         drawObstacleMain();
     }
-}
+} // 각 줄의 장애물 그리기
 function drawObstacleMain() {
     for (let i = 0; i < 10; i++) {
         ctx.strokeStyle = 'black';

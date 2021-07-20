@@ -147,9 +147,9 @@ function move() {
     if (downPressed) {
         playerY += playerSpeed;
     }
-    ctx.translate(500, 250);
-    ctx.rotate((Math.PI / 180) * num);
-    ctx.translate(-500, -250);
+    ctx.translate(500, 250); // 맵 중심정하기
+    ctx.rotate((Math.PI / 180) * num); // 중심을 기준으로 맵 돌리기
+    ctx.translate(-500, -250); // 맵 중심 원위치로 정하기
     drawPlayer();
     drawObstacle();
     setTimeout(move, 10);

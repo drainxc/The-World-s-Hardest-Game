@@ -75,7 +75,7 @@ function stop(event) {
     }
     else if (event.key == 's' || event.key == 'S' || event.key == '2' || event.key == '5') {
         downPressed = false;
-    }//플레이어 스탑
+    } //플레이어 스탑
 }
 
 setInterval(function () {
@@ -107,7 +107,7 @@ setInterval(function () {
         }
         widthObstacleX -= widthObstacleSpeed;
     } // 장애물 이동
-    ctx.globalAlpha -= 0.003;
+    ctx.globalAlpha -= 0.003; // 맵 투명도 낮추기
     drawPlayer();
     drawWidthObstacle();
     drawheightObstacle();
@@ -153,8 +153,8 @@ function drawWidthObstacle() {
         widthObstacleY[i] = (i + 1.5) * 80;
         ctx.strokeRect(widthObstacleX, widthObstacleY[i], 20, 20);
         ctx.fillRect(widthObstacleX, widthObstacleY[i], 20, 20);
-    } // 장애물 그리기
-}
+    } 
+} // 장애물 그리기
 
 function reload(event) {
     if (event.key == 'r' || event.key == 'R') {

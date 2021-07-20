@@ -84,7 +84,7 @@ setInterval(function () {
             obstacleSpeed += 0.12;
         }
         if(obstacleSpeed >= 5 && playerSpeed > 0.5) {
-            playerSpeed -= 0.0025;
+            playerSpeed -= 0.0025; // 플레이어 속도 감소
         }
     }
     else {
@@ -96,7 +96,7 @@ setInterval(function () {
             obstacleSpeed += 0.35;
         }
         if(obstacleSpeed >= 5 && playerSpeed > 2) {
-            playerSpeed -= 0.0025;
+            playerSpeed -= 0.0025; // 장애물 속도 증가
         }
     } // 장애물 이동
     drawPlayer();

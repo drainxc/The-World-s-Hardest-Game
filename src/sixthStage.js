@@ -198,7 +198,7 @@ function drawPoint() {
     ctx.lineWidth = 5;
     if (playerX <= 520 && playerX >= 480 && playerY <= 270 && playerY >= 230 && point == false) {
         point = true;
-    }
+    } // 포인트 획득
     if (point >= 1) {
         ctx.strokeStyle = "white";
         ctx.arc(500, 250, 10, 0, 2 * Math.PI);
@@ -206,7 +206,7 @@ function drawPoint() {
         ctx.fill();
         ctx.stroke();
     }
-}
+} // 포인트 그리기
 
 function reload(event) {
     if (event.key == 'r' || event.key == 'R') {
