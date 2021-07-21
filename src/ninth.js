@@ -29,9 +29,6 @@ let oddWidthObstacleY = [];
 let evenWidthObstacleX = 500;
 let evenWidthObstacleY = [];
 
-for (let num = 0; num < 10; num++) {
-}
-
 function drawPlayer() {
     if (playerX < 3) playerX = 3;
     if (playerY < 3) playerY = 3;
