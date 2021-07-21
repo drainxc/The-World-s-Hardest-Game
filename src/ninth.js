@@ -167,17 +167,17 @@ function move() {
 move();
 
 function drawObstacle() {
-    for (let i = 0; i < 18; i += 2) {
+    for (let i = 0; i < 19; i += 2) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        evenHeightObstacleX[i] = (i + 2.5) * 40;
+        evenHeightObstacleX[i] = (i + 2.75) * 40;
         ctx.strokeRect(evenHeightObstacleX[i], evenHeightObstacleY, 20, 20);
         ctx.fillRect(evenHeightObstacleX[i], evenHeightObstacleY, 20, 20);
     }
-    for (let i = 1; i < 18; i += 2) {
+    for (let i = 1; i < 19; i += 2) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        oddHeightObstacleX[i] = (i + 2.5) * 40;
+        oddHeightObstacleX[i] = (i + 2.75) * 40;
         ctx.strokeRect(oddHeightObstacleX[i], oddHeightObstacleY, 20, 20);
         ctx.fillRect(oddHeightObstacleX[i], oddHeightObstacleY, 20, 20);
     }

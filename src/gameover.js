@@ -8,3 +8,11 @@ exit.addEventListener('click', function() {
 before.addEventListener('click', function () {
     location.href = "javascript:history.back();"
 }) // 전에 하던 단계로 이동
+
+function keydownBefore(event) {
+    if (event.key == 'Enter' || event.key == ' ') {
+        location.href = "javascript:history.back();"
+    }
+}
+
+document.addEventListener('keydown', keydownBefore);
