@@ -19,10 +19,10 @@ ctx.lineWidth = 5;
 let playerX = 5;
 let playerY = 5;
 let playerSpeed = 2;
-let heightObstacleSpeed = 21;
+let heightObstacleSpeed = 7;
 let heightObstacleX = [];
 let heightObstacleY = 235;
-let widthObstacleSpeed = 29.8 + 14.9;
+let widthObstacleSpeed = 14.9;
 let widthObstacleX = 500;
 let widthObstacleY = [];
 let point1 = false;
@@ -34,27 +34,27 @@ function drawPlayer() {
     if (playerX > 978) playerX = 978;
     if (playerY > 228) playerY = 228;
     for (let i = 0; i < 25; i++) {
-        if ((heightObstacleX[i] + 20) >= playerX && (heightObstacleX[i] - 20) <= playerX && heightObstacleY + 20 >= playerY && heightObstacleY - 20 <= playerY) {
-            location.href="gameover.html";
-        }
-        if ((widthObstacleX + 20) >= playerX && (widthObstacleX - 20) <= playerX && widthObstacleY[i] + 20 >= playerY && widthObstacleY[i] - 20 <= playerY) {
-            location.href="gameover.html";
-        } // player1 게임오버 장면
-        
-        if ((heightObstacleX[i] + 20) >= playerX && (heightObstacleX[i] - 20) <= playerX && heightObstacleY + 20 >= playerY + 250 && heightObstacleY - 20 <= playerY + 250) {
-            location.href="gameover.html";
-        }
-        if ((widthObstacleX + 20) >= playerX && (widthObstacleX - 20) <= playerX && widthObstacleY[i] + 20 >= playerY + 250 && widthObstacleY[i] - 20 <= playerY + 250) {
-            location.href="gameover.html";
-        } // player2 게임오버 장면
-        if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500 && point1 == true && point2 == true) {
-            location.href="file:///C:/Users/user/Desktop/World's%20Hardest%20Game/src/fifthStage.html";
+        // if ((heightObstacleX[i] + 20) >= playerX && (heightObstacleX[i] - 20) <= playerX && heightObstacleY + 20 >= playerY && heightObstacleY - 20 <= playerY) {
+        //     location.href = "gameover.html";
+        // }
+        // if ((widthObstacleX + 20) >= playerX && (widthObstacleX - 20) <= playerX && widthObstacleY[i] + 20 >= playerY && widthObstacleY[i] - 20 <= playerY) {
+        //     location.href = "gameover.html";
+        // } // player1 게임오버 장면
+
+        // if ((heightObstacleX[i] + 20) >= playerX && (heightObstacleX[i] - 20) <= playerX && heightObstacleY + 20 >= playerY + 250 && heightObstacleY - 20 <= playerY + 250) {
+        //     location.href = "gameover.html";
+        // }
+        // if ((widthObstacleX + 20) >= playerX && (widthObstacleX - 20) <= playerX && widthObstacleY[i] + 20 >= playerY + 250 && widthObstacleY[i] - 20 <= playerY + 250) {
+        //     location.href = "gameover.html";
+        // } // player2 게임오버 장면
+        if (playerX >= 900 && playerX <= 1000 && playerY + 250 >= 400 && playerY + 250 <= 500 && point1 == true && point2 == true) {
+            location.href = "";
         } // 다음 단계 이동
     }
     ctx.strokeStyle = 'black';
     ctx.fillStyle = 'red';
     ctx.strokeRect(playerX, playerY, 20, 20);
-    ctx.fillRect(playerX, playerY, 20, 20); 
+    ctx.fillRect(playerX, playerY, 20, 20);
     ctx.strokeRect(playerX, playerY + 250, 20, 20);
     ctx.fillRect(playerX, playerY + 250, 20, 20); // 플레이어 그리기
     audio.play(); // 오디오 재생
@@ -119,6 +119,9 @@ setInterval(function () {
         }
         widthObstacleX -= widthObstacleSpeed;
     } // 장애물 이동
+    // heightObstacleSpeed += 0.07 / 2;
+    // widthObstacleSpeed += 0.149 / 2;
+    ctx.globalAlpha -= 0.001;
     drawPoint();
     drawPlayer();
     drawWidthObstacle();
@@ -142,7 +145,7 @@ function move() {
     if (downPressed) {
         playerY += playerSpeed;
     }
-    playerX += 1; // 바람 표현
+    // playerX += 1; // 바람 표현
     drawPoint();
     drawPlayer();
     drawheightObstacle();
@@ -172,40 +175,42 @@ function drawWidthObstacle() {
 }
 
 function drawPoint() {
+    if (point1 == false) {
+        ctx.strokeStyle = "black";
+        ctx.fillStyle = "yellow";
+    }
+    else if (point1 == true) {
+        ctx.strokeStyle = "white";
+        ctx.fillStyle = "white";
+    }
     ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.arc(500, 150, 10, 0, 2 * Math.PI);
-    ctx.fillStyle = "yellow";
     ctx.fill();
     ctx.stroke();
     ctx.lineWidth = 5;
     if (playerX <= 520 && playerX >= 480 && playerY <= 170 && playerY >= 130 && point1 == false) {
         point1 = true;
     } // 포인트 획득
-    if (point1 == true) {
+
+    if (point2 == false) {
+        ctx.strokeStyle = "black";
+        ctx.fillStyle = "yellow";
+    }
+    else if (point2 == true) {
         ctx.strokeStyle = "white";
-        ctx.arc(500, 150, 10, 0, 2 * Math.PI);
         ctx.fillStyle = "white";
-        ctx.fill();
-        ctx.stroke();
     }
     ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.arc(500, 350, 10, 0, 2 * Math.PI);
-    ctx.fillStyle = "yellow";
+    ctx.arc(500, 350, 10, 0, 2 * Math.PI);
     ctx.fill();
     ctx.stroke();
     ctx.lineWidth = 5;
-    if (playerX <= 520 && playerX >= 480 && playerY <= 370 && playerY >= 330 && point2 == false) {
+    if (playerX <= 520 && playerX >= 480 && playerY + 250 <= 370 && playerY + 250 >= 330 && point2 == false) {
         point2 = true;
     } // 포인트 획득
-    if (point2 == true) {
-        ctx.strokeStyle = "white";
-        ctx.arc(500, 150, 10, 0, 2 * Math.PI);
-        ctx.fillStyle = "white";
-        ctx.fill();
-        ctx.stroke();
-    }
 } // 포인트 그리기
 
 function reload(event) {
