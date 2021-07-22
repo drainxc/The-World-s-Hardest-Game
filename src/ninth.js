@@ -105,11 +105,7 @@ function stop(event) {
 }
 
 setInterval(function () {
-    ctx.clearRect(0, 0, 1000, 500);
-    ctx.fillStyle = "rgb(162, 255, 209)";
-    ctx.fillRect(0, 0, 100, 100);
-    ctx.fillRect(900, 400, 100, 100);
-
+    drawMap();
     if (oddHeightObstacleY > 465) {
         heightBounce = false;
     }
@@ -145,11 +141,7 @@ setInterval(function () {
 }, 20);
 
 function move() {
-    ctx.clearRect(0, 0, 1000, 500);
-    ctx.fillStyle = "rgb(162, 255, 209)";
-    ctx.fillRect(0, 0, 100, 100);
-    ctx.fillRect(900, 400, 100, 100);
-
+    drawMap();
     if (leftPressed) {
         playerX -= playerSpeed;
     }
@@ -204,6 +196,22 @@ function reload(event) {
         location.reload();
     }
 } // 재시작
+
+function drawMap() {
+    ctx.clearRect(0, 0, 1000, 500);
+    ctx.fillStyle = "rgb(162, 255, 209)";
+    ctx.fillRect(0, 0, 100, 100);
+    ctx.fillRect(900, 400, 100, 100);
+    ctx.fillRect(0, 250, 100, 100);
+    ctx.fillRect(900, 150, 100, 100);
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(0, 250);
+    ctx.lineTo(1000, 250);
+    ctx.stroke();
+    ctx.lineWidth = 5;
+
+}
 
 document.addEventListener('keydown', start);
 document.addEventListener('keyup', stop);
