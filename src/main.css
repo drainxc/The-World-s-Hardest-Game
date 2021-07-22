@@ -55,11 +55,11 @@ body {
     cursor: pointer;
 }
 
-#snubbyLand {
+#github {
     color: yellow;
 } 
 
-#snubbyLand:hover {
+#github:hover {
     color: rgb(184, 184, 0);
     cursor: pointer;
 }
