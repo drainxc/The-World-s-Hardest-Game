@@ -46,11 +46,11 @@ body {
     cursor: pointer;
 }
 
-#moreGames {
+#tutorial {
     color: rgb(0, 255, 42);
 }
 
-#moreGames:hover {
+#tutorial:hover {
     color: rgb(0, 175, 29);
     cursor: pointer;
 }
