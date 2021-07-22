@@ -26,16 +26,16 @@ body, html {
 }
 
 #before {
-    margin-left: 80px;
-    margin-right: 40px;
-    margin-top: 330px;
+    margin-left: 50px;
+    margin-right: 80px;
+    margin-top: 400px;
     width: 100px;
     height: 50px;
 }
 
 #exit {
-    margin-top: 330px;
-    margin-right: 100px;
+    margin-top: 400px;
+    margin-right: 75px;
     width: 100px;
     height: 50px;
 }
