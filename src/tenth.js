@@ -32,7 +32,7 @@ function drawPlayer() {
     if (playerX < 3) playerX = 3;
     if (playerY < 3) playerY = 3;
     if (playerX > 978) playerX = 978;
-    if (playerY > 478) playerY = 478;
+    if (playerY > 228) playerY = 228;
     for (let i = 0; i < 25; i++) {
         if ((heightObstacleX[i] + 20) >= playerX && (heightObstacleX[i] - 20) <= playerX && heightObstacleY + 20 >= playerY && heightObstacleY - 20 <= playerY) {
             location.href="gameover.html";
@@ -47,7 +47,9 @@ function drawPlayer() {
     ctx.strokeStyle = 'black';
     ctx.fillStyle = 'red';
     ctx.strokeRect(playerX, playerY, 20, 20);
-    ctx.fillRect(playerX, playerY, 20, 20); // 플레이어 그리기
+    ctx.fillRect(playerX, playerY, 20, 20); 
+    ctx.strokeRect(playerX, playerY + 250, 20, 20);
+    ctx.fillRect(playerX, playerY + 250, 20, 20); // 플레이어 그리기
     audio.play(); // 오디오 재생
 }
 
