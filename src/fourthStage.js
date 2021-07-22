@@ -1,5 +1,6 @@
 const canvas = document.getElementById('gameMap');
 const ctx = canvas.getContext('2d');
+const audio = document.getElementById('myAudio');
 
 canvas.width = 1000;
 canvas.height = 500;
@@ -45,6 +46,7 @@ function drawPlayer() {
     ctx.fillStyle = 'red';
     ctx.strokeRect(playerX, playerY, 20, 20);
     ctx.fillRect(playerX, playerY, 20, 20); // 플레이어 그리기
+    audio.play(); // 오디오 재생
 }
 
 function start(event) {
