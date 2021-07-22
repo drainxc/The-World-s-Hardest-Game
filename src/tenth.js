@@ -16,47 +16,48 @@ ctx.fillStyle = "black";
 ctx.fillRect(0, 0, 1000, 500)
 ctx.lineWidth = 5;
 
-let playerX = 5;
-let playerY = 5;
-let playerSpeed = 2;
-let heightObstacleSpeed = 7;
-let heightObstacleX = [];
-let heightObstacleY = 235;
-let widthObstacleSpeed = 14.9;
-let widthObstacleX = 500;
-let widthObstacleY = [];
+let playerX = 255;
+let playerY = 255;
+let playerSpeed = 1;
+let heightObstacleSpeed = 3.5;
+let HeightObstacleX = [];
+let HeightObstacleY = 350;
+let widthObstacleSpeed = 8.4;
+let WidthObstacleX = 500;
+let WidthObstacleY = [];
+let num = 0.1;
 let point1 = false;
 let point2 = false;
 
 function drawPlayer() {
-    if (playerX < 3) playerX = 3;
-    if (playerY < 3) playerY = 3;
-    if (playerX > 978) playerX = 978;
-    if (playerY > 228) playerY = 228;
+    if (playerX < 255) playerX = 255;
+    if (playerY < 255) playerY = 255;
+    if (playerX > 685) playerX = 685;
+    if (playerY > 335) playerY = 335;
     for (let i = 0; i < 25; i++) {
-        // if ((heightObstacleX[i] + 20) >= playerX && (heightObstacleX[i] - 20) <= playerX && heightObstacleY + 20 >= playerY && heightObstacleY - 20 <= playerY) {
-        //     location.href = "gameover.html";
-        // }
-        // if ((widthObstacleX + 20) >= playerX && (widthObstacleX - 20) <= playerX && widthObstacleY[i] + 20 >= playerY && widthObstacleY[i] - 20 <= playerY) {
-        //     location.href = "gameover.html";
-        // } // player1 게임오버 장면
-
-        // if ((heightObstacleX[i] + 20) >= playerX && (heightObstacleX[i] - 20) <= playerX && heightObstacleY + 20 >= playerY + 250 && heightObstacleY - 20 <= playerY + 250) {
-        //     location.href = "gameover.html";
-        // }
-        // if ((widthObstacleX + 20) >= playerX && (widthObstacleX - 20) <= playerX && widthObstacleY[i] + 20 >= playerY + 250 && widthObstacleY[i] - 20 <= playerY + 250) {
-        //     location.href = "gameover.html";
-        // } // player2 게임오버 장면
-        if (playerX >= 900 && playerX <= 1000 && playerY + 250 >= 400 && playerY + 250 <= 500 && point1 == true && point2 == true) {
+        if ((HeightObstacleX[i] + 10) >= playerX && (HeightObstacleX[i] - 10) <= playerX && HeightObstacleY + 10 >= playerY && HeightObstacleY - 10 <= playerY) {
+            location.href = "gameover.html";
+        }
+        if ((WidthObstacleX + 10) >= playerX && (WidthObstacleX - 10) <= playerX && WidthObstacleY[i] + 10 >= playerY &WidthObstacleY[i] - 10 <= playerY) {
+            location.href = "gameover.html";
+        } // player1 게임오버 장면
+        
+        if ((HeightObstacleX[i] + 10) >= playerX && (HeightObstacleX[i] - 10) <= playerX && HeightObstacleY + 10 >= playerY + 100 && HeightObstacleY - 10 <= playerY + 100) {
+            location.href = "gameover.html";
+        }
+        if ((WidthObstacleX + 10) >= playerX && (WidthObstacleX - 10) <= playerX && WidthObstacleY[i] + 10 >= playerY + 100 && WidthObstacleY[i] - 10 <= playerY + 100) {
+            location.href = "gameover.html";
+        } // player2 게임오버 장면
+        if (playerX >= 650 && playerX <= 1000 && playerY + 100 >= 400 && playerY + 100 <= 500) {
             location.href = "";
         } // 다음 단계 이동
     }
     ctx.strokeStyle = 'black';
     ctx.fillStyle = 'red';
-    ctx.strokeRect(playerX, playerY, 20, 20);
-    ctx.fillRect(playerX, playerY, 20, 20);
-    ctx.strokeRect(playerX, playerY + 250, 20, 20);
-    ctx.fillRect(playerX, playerY + 250, 20, 20); // 플레이어 그리기
+    ctx.strokeRect(playerX, playerY, 10, 10);
+    ctx.fillRect(playerX, playerY, 10, 10);
+    ctx.strokeRect(playerX, playerY + 100, 10, 10);
+    ctx.fillRect(playerX, playerY + 100, 10, 10); // 플레이어 그리기
     audio.play(); // 오디오 재생
 }
 
@@ -91,53 +92,51 @@ function stop(event) {
 }
 
 setInterval(function () {
-    ctx.clearRect(0, 0, 1000, 500);
-    ctx.fillStyle = "rgb(162, 255, 209)";
-    ctx.fillRect(0, 0, 100, 100)
-    ctx.fillRect(900, 400, 100, 100)
+    drawMap();
+    if (HeightObstacleY > 450) {
+        heightBounce = false;
+    }
+    else if (HeightObstacleY < 250) {
+        heightBounce = true;
+    }
+    if (WidthObstacleX > 728) {
+        widthBounce = false;
+    }
+    else if (WidthObstacleX < 250) {
+        widthBounce = true;
+    }
+
     if (heightBounce) {
-        if (heightObstacleY > 465) {
-            heightBounce = false;
-        }
-        heightObstacleY += heightObstacleSpeed;
+        HeightObstacleY += heightObstacleSpeed;
     }
     else {
-        if (heightObstacleY < 10) {
-            heightBounce = true;
-        }
-        heightObstacleY -= heightObstacleSpeed;
+        HeightObstacleY -= heightObstacleSpeed;
     }
     if (widthBounce) {
-        if (widthObstacleX > 978) {
-            widthBounce = false;
-        }
-        widthObstacleX += widthObstacleSpeed;
+        WidthObstacleX += widthObstacleSpeed;
     }
     else {
-        if (widthObstacleX < 10) {
-            widthBounce = true;
-        }
-        widthObstacleX -= widthObstacleSpeed;
+        WidthObstacleX -= widthObstacleSpeed;
     } // 장애물 이동
-    // heightObstacleSpeed += 0.07 / 2;
-    // widthObstacleSpeed += 0.149 / 2;
-    ctx.globalAlpha -= 0.001;
+    if (heightObstacleSpeed < 12.5) {
+        heightObstacleSpeed += 0.0035 * 2;
+        widthObstacleSpeed += 0.0084 * 2;
+    }
+    ctx.globalAlpha -= 0.0015;
+    // if (num <= 4)
+    // num += 0.015;
     drawPoint();
     drawPlayer();
-    drawWidthObstacle();
-    drawheightObstacle();
+    drawObstacle();
 }, 20);
 
 function move() {
-    ctx.clearRect(0, 0, 1000, 500);
-    ctx.fillStyle = "rgb(162, 255, 209)";
-    ctx.fillRect(0, 0, 100, 100)
-    ctx.fillRect(900, 400, 100, 100)
+    drawMap();
     if (leftPressed) {
         playerX -= playerSpeed;
     }
     if (rightPressed) {
-        playerX += playerSpeed + 0.5;
+        playerX += playerSpeed;
     }
     if (upPressed) {
         playerY -= playerSpeed;
@@ -145,33 +144,32 @@ function move() {
     if (downPressed) {
         playerY += playerSpeed;
     }
-    // playerX += 1; // 바람 표현
+    playerX += 0.5; // 바람 표현
+    ctx.translate(500, 250); // 맵 중심정하기
+    ctx.rotate((Math.PI / 180) * 0.5); // 중심을 기준으로 맵 돌리기
+    ctx.translate(-500, -250); // 맵 중심 원위치로 정하기
     drawPoint();
     drawPlayer();
-    drawheightObstacle();
-    drawWidthObstacle();
+    drawObstacle();
     setTimeout(move, 10);
 } // 플레이어 이동
 move();
 
-function drawheightObstacle() {
+function drawObstacle() {
     for (let i = 0; i < 8; i++) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        heightObstacleX[i] = (i + 1.5) * 97.5;
-        ctx.strokeRect(heightObstacleX[i], heightObstacleY, 20, 20);
-        ctx.fillRect(heightObstacleX[i], heightObstacleY, 20, 20);
-    } // 장애물 그리기
-}
-
-function drawWidthObstacle() {
+        HeightObstacleX[i] = (i + 7) * 45;
+        ctx.strokeRect(HeightObstacleX[i], HeightObstacleY, 10, 10);
+        ctx.fillRect(HeightObstacleX[i], HeightObstacleY, 10, 10);
+    }
     for (let i = 0; i < 2; i++) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        widthObstacleY[i] = (i + 0.7) * 200;
-        ctx.strokeRect(widthObstacleX, widthObstacleY[i], 20, 20);
-        ctx.fillRect(widthObstacleX, widthObstacleY[i], 20, 20);
-    }
+        WidthObstacleY[i] = (i + 3.1) * 96;
+        ctx.strokeRect(WidthObstacleX, WidthObstacleY[i], 10, 10);
+        ctx.fillRect(WidthObstacleX, WidthObstacleY[i], 10, 10);
+    } // 장애물 그리기
 }
 
 function drawPoint() {
@@ -185,13 +183,13 @@ function drawPoint() {
     }
     ctx.lineWidth = 3;
     ctx.beginPath();
-    ctx.arc(500, 150, 10, 0, 2 * Math.PI);
+    ctx.arc(500, 300, 5, 0, 2 * Math.PI);
     ctx.fill();
     ctx.stroke();
     ctx.lineWidth = 5;
-    if (playerX <= 520 && playerX >= 480 && playerY <= 170 && playerY >= 130 && point1 == false) {
+    if (playerX <= 510 && playerX >= 490 && playerY <= 310 && playerY >= 290 && point1 == false) {
         point1 = true;
-    } // 포인트 획득
+    } // 포인트1 획득
 
     if (point2 == false) {
         ctx.strokeStyle = "black";
@@ -203,14 +201,13 @@ function drawPoint() {
     }
     ctx.lineWidth = 3;
     ctx.beginPath();
-    ctx.arc(500, 350, 10, 0, 2 * Math.PI);
-    ctx.arc(500, 350, 10, 0, 2 * Math.PI);
+    ctx.arc(500, 400, 5, 0, 2 * Math.PI);
     ctx.fill();
     ctx.stroke();
     ctx.lineWidth = 5;
-    if (playerX <= 520 && playerX >= 480 && playerY + 250 <= 370 && playerY + 250 >= 330 && point2 == false) {
+    if (playerX <= 510 && playerX >= 490 && playerY + 100 <= 410 && playerY + 100 >= 390 && point2 == false) {
         point2 = true;
-    } // 포인트 획득
+    } // 포인트2 획득
 } // 포인트 그리기
 
 function reload(event) {
@@ -218,6 +215,21 @@ function reload(event) {
         location.reload();
     }
 } // 재시작
+
+function drawMap() {
+    ctx.clearRect(0, 0, 1000, 500);
+    ctx.fillStyle = "rgb(162, 255, 209)";
+    ctx.fillRect(250, 250, 50, 50)
+    ctx.fillRect(650, 400, 50, 50)
+    ctx.fillRect(250, 350, 50, 50)
+    ctx.fillRect(650, 300, 50, 50)
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(250, 350);
+    ctx.lineTo(700, 350);
+    ctx.stroke();
+    ctx.lineWidth = 5;
+}
 
 document.addEventListener('keydown', start);
 document.addEventListener('keyup', stop);

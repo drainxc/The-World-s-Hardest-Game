@@ -210,7 +210,6 @@ function drawMap() {
     ctx.lineTo(1000, 250);
     ctx.stroke();
     ctx.lineWidth = 5;
-
 }
 
 document.addEventListener('keydown', start);
