@@ -41,7 +41,7 @@ function drawPlayer() {
 }
 
 function start(event) {
-    if (event.key == 'a' || event.key == 'A' || event.key == '') {
+    if (event.key == 'a' || event.key == 'A' || event.key == '4') {
         leftPressed = true;
     }
     else if (event.key == 'd' || event.key == 'D' || event.key == '6') {
