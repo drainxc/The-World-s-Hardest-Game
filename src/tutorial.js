@@ -32,10 +32,10 @@ function drawPlayer() {
         if ((obstacleX[i] + 20) >= playerX && (obstacleX[i] - 20) <= playerX && obstacleY + 20 >= playerY && obstacleY - 20 <= playerY) {
             location.href="gameover.html";
         }
-        if ((250 + 20) >= playerX && (250 - 20) <= playerX && 250 + 20 >= playerY && 250 - 20 <= playerY) {
+    } 
+    if (270 >= playerX && 230 <= playerX && 270 >= playerY && 230 <= playerY) {
             location.href="gameover.html"
-        }
-    } // 게임오버 장면
+        }// 게임오버 장면
     if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500 && point == true) {
         location.href="main.html";
     } // 다음 단계 이동
@@ -133,7 +133,7 @@ function drawObstacle() {
     for (let i = 0; i < 1; i++) {
         ctx.strokeStyle = 'black';
         ctx.fillStyle = 'blue';
-        obstacleX[i] = 500
+        obstacleX[i] = (i + 500);
         ctx.strokeRect(obstacleX[i], obstacleY, 20, 20);
         ctx.fillRect(obstacleX[i], obstacleY, 20, 20);
     } // 장애물 그리기

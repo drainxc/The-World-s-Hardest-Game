@@ -11,5 +11,5 @@ playGame.addEventListener('click', function() {
 }) // 게임시작
 
 tutorial.addEventListener('click', function () {
-    location.href = "";
+    location.href = "tutorial.html";
 })
