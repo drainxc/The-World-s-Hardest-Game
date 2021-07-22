@@ -37,11 +37,11 @@ body {
     cursor: pointer;
 }
 
-#leaderBoard {
+#selectLevel {
     color: rgb(23, 66, 255);
 }
 
-#leaderBoard:hover {
+#selectLevel:hover {
     color: rgb(21, 52, 190);
     cursor: pointer;
 }
