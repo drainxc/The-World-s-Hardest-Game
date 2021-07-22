@@ -39,7 +39,14 @@ function drawPlayer() {
         }
         if ((widthObstacleX + 20) >= playerX && (widthObstacleX - 20) <= playerX && widthObstacleY[i] + 20 >= playerY && widthObstacleY[i] - 20 <= playerY) {
             location.href="gameover.html";
-        } // 게임오버 장면
+        } // player1 게임오버 장면
+        
+        if ((heightObstacleX[i] + 20) >= playerX && (heightObstacleX[i] - 20) <= playerX && heightObstacleY + 20 >= playerY + 250 && heightObstacleY - 20 <= playerY + 250) {
+            location.href="gameover.html";
+        }
+        if ((widthObstacleX + 20) >= playerX && (widthObstacleX - 20) <= playerX && widthObstacleY[i] + 20 >= playerY + 250 && widthObstacleY[i] - 20 <= playerY + 250) {
+            location.href="gameover.html";
+        } // player2 게임오버 장면
         if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500 && point1 == true && point2 == true) {
             location.href="file:///C:/Users/user/Desktop/World's%20Hardest%20Game/src/fifthStage.html";
         } // 다음 단계 이동

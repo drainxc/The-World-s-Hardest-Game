@@ -47,7 +47,8 @@ function drawPlayer() {
         }
         if ((evenWidthObstacleX + 20) >= playerX && (evenWidthObstacleX - 20) <= playerX && evenWidthObstacleY[i] + 20 >= playerY && evenWidthObstacleY[i] - 20 <= playerY) {
             location.href = "gameover.html";
-        }
+        } // player1 게임오버 장면
+
         if ((oddHeightObstacleX[i] + 20) >= playerX && (oddHeightObstacleX[i] - 20) <= playerX && oddHeightObstacleY + 20 >= playerY + 250 && oddHeightObstacleY - 20 <= playerY + 250) {
             location.href = "gameover.html";
         }
@@ -59,8 +60,7 @@ function drawPlayer() {
         }
         if ((evenWidthObstacleX + 20) >= playerX && (evenWidthObstacleX - 20) <= playerX && evenWidthObstacleY[i] + 20 >= playerY + 250 && evenWidthObstacleY[i] - 20 <= playerY + 250) {
             location.href = "gameover.html";
-        }
-        // 게임오버 장면
+        } // player2 게임오버 장면
         if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500) {
             location.href = "file:///C:/Users/user/Desktop/World's%20Hardest%20Game/src/seventhStage.html";
         } // 다음 단계 이동
