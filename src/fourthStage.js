@@ -22,7 +22,7 @@ let playerSpeed = 2;
 let heightObstacleSpeed = 21;
 let heightObstacleX = [];
 let heightObstacleY = 235;
-let widthObstacleSpeed = 44;
+let widthObstacleSpeed = 29.8 + 14.9;
 let widthObstacleX = 500;
 let widthObstacleY = [];
 
