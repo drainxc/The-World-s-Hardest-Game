@@ -49,8 +49,8 @@ function drawPlayer() {
             location.href = "gameover.html";
         } // player2 게임오버 장면
         if (playerX >= 650 && playerX <= 1000 && playerY + 100 >= 400 && playerY + 100 <= 500) {
-            location.href = "";
-        } // 다음 단계 이동
+            location.href = "file:///C:/Users/user/Desktop/World's%20Hardest%20Game/src/celebration.html";
+        } // 다음 페이지 이동
     }
     ctx.strokeStyle = 'black';
     ctx.fillStyle = 'red';
