@@ -1,0 +1,23 @@
+img {
+    width: 280px;
+    height: 140px;
+    border: black solid 1px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.floor {
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    color: black;
+    margin-left: 123px;
+    margin-right: 123px;
+}
+
+.stage {
+    display: flex;
+    justify-content: center;
+}

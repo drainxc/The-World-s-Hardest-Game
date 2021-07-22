@@ -12,4 +12,4 @@ playGame.addEventListener('click', function() {
 
 tutorial.addEventListener('click', function () {
     location.href = "tutorial.html";
-})
+}) // 튜토리얼 사이트
