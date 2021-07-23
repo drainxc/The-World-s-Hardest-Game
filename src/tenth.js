@@ -143,9 +143,9 @@ function move() {
         playerY += playerSpeed;
     }
     playerX += 0.5; // 바람 표현
-    // ctx.translate(500, 250); // 맵 중심정하기
-    // ctx.rotate((Math.PI / 180) * 0.5); // 중심을 기준으로 맵 돌리기
-    // ctx.translate(-500, -250); // 맵 중심 원위치로 정하기
+    ctx.translate(500, 250); // 맵 중심정하기
+    ctx.rotate((Math.PI / 180) * 0.5); // 중심을 기준으로 맵 돌리기
+    ctx.translate(-500, -250); // 맵 중심 원위치로 정하기
     drawPoint();
     drawPlayer();
     drawObstacle();
