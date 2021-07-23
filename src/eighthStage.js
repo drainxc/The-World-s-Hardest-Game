@@ -34,7 +34,7 @@ function drawPlayer() {
                 location.href = "gameover.html";
             } // 게임오버 장면
             if (playerX >= 900 && playerX <= 1000 && playerY >= 400 && playerY <= 500) {
-                location.href = "file:///C:/Users/user/Desktop/World's%20Hardest%20Game/src/fifthStage.html";
+                location.href = "file:///C:/Users/user/Desktop/World's%20Hardest%20Game/src/ninthStage.html";
             } // 다음 단계 이동
         }
     }
