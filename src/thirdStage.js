@@ -95,7 +95,7 @@ setInterval(function () {
         }
         obstacleY -= obstacleSpeed;
         if (obstacleSpeed <= 45) {
-            obstacleSpeed += 0.35;
+            obstacleSpeed += 0.12;
         }
         if(obstacleSpeed >= 5 && playerSpeed > 2) {
             playerSpeed -= 0.0025; // 장애물 속도 증가
